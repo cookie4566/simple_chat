@@ -14,3 +14,22 @@ def handle_client(client_socket):
         response = "Server received your message:" + message
         client_socket.sendall(response.encode('utf-8'))
     client_socket.close()
+
+# main (hehe) body of the server code that creates a socket to listen to empty ports and other fun socket tings
+def main():
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # creates a TCP(Transmission Control Protocol/ .SOCK_STREAM) socket that uses IPv4(internet protocol/ .AF_INET)
+    host= '127.0.0.1' # test ip address that points to current user system
+    port= 12345 # random inhibatied port number, safe for chatting :)
+    server_socket.bind((host,port))
+    server_socket.listen(5)
+    print(f"Server listening on {host}:{port}")
+    
+    # while-loop allows the connection of multiple clients via threading
+    while True:
+        client_socket, client_address = server_socket.accept()
+        print(f"Accpted connection from {client_address}")
+        client_handler = threading.Thread(target=handle_client, args=(client_socket,))
+        client_handler.start()
+
+if __name__ =="__main__":
+    main()

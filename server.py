@@ -17,8 +17,8 @@ def handle_client(client_socket):
 
 # main (hehe) body of the server code that creates a socket to listen to empty ports and other fun socket tings
 def main():
-    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # creates a TCP(Transmission Control Protocol/ .SOCK_STREAM) socket that uses IPv4(internet protocol/ .AF_INET)
-    host= '127.0.0.1' # test ip address that points to current user system
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # creates a TCP(Transmission Control Protocol/ .SOCK_STREAM) socket that uses IPv4(internet protocol/ .AF_INET) context manger type
+    host= '127.0.0.1' # test ip address that points to current user system(local host)
     port= 12345 # random inhibatied port number, safe for chatting :)
     server_socket.bind((host,port))
     server_socket.listen(5)

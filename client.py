@@ -2,6 +2,8 @@
 # base code from https://pandeyshikha075.medium.com/building-a-chat-server-and-client-in-python-with-socket-programming-c76de52cc1d5
 import socket
 import threading
+# Gui for chat visualization
+import tkinter
 
 def main():
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
